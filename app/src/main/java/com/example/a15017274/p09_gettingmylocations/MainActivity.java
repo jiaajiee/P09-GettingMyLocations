@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
         if (permissionCheck_Coarse == PermissionChecker.PERMISSION_GRANTED
                 || permissionCheck_Fine == PermissionChecker.PERMISSION_GRANTED) {
+
             mLocation = LocationServices.FusedLocationApi.getLastLocation(
                     mGoogleApiClient);
 
@@ -101,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             Toast.makeText(this, "Location not Detected",
                     Toast.LENGTH_SHORT).show();
         }
+
 
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,8 +185,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
         try {
             FileWriter writer = new FileWriter(targetFile, true);
-            writer.write("Latitude: " + mLocation.getLatitude());
-            writer.write("Longitude: " + mLocation.getLongitude());
+            writer.write("Latitude: " + mLocation.getLatitude() + "\n" + "Longitude: " + mLocation.getLongitude() + "\n");
             writer.flush();
             writer.close();
 
